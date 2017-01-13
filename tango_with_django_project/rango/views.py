@@ -19,5 +19,6 @@ def index(request):
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
-    html = "<html><h1>This is the about page</h1><a href='/rango/'>Main page</a></html>"
-    return HttpResponse(html)
+    context_dict = {'aboutMessage': "Hi, I am the about page :) !"}
+    context_dict["authorName"] = "Matchima Ditthawibun"
+    return render(request, 'rango/about.html', context=context_dict)
