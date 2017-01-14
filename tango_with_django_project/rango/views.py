@@ -6,11 +6,6 @@ from rango.models import Page
 from rango.forms import CategoryForm, PageForm
 
 def index(request):
-    html = "<html><h1>This is the main page</h1><a href='/rango/about/'>About</a></html>"
-    return HttpResponse(html)
-
-
-def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list = Page.objects.order_by('-views')[:5]
     context_dict = {'categories': category_list}
@@ -19,6 +14,8 @@ def index(request):
     return render(request, 'rango/index.html', context_dict)
 
 def about(request):
+    print(request.method)
+    print(request.user)
     context_dict = {'aboutMessage': "Hi, I am the about page :) !"}
     context_dict["authorName"] = "Matchima Ditthawibun"
     return render(request, 'rango/about.html', context=context_dict)
