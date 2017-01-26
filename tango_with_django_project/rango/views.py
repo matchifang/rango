@@ -79,8 +79,12 @@ def about(request):
 
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']
+    
+    html = "<html><h1>Rango says here is the about page</h1><a href='/rango/'>Main page</a></html>"
+    
+    return HttpResponse(html)
 
-    return render(request, 'rango/about.html', context=context_dict)
+    #return render(request, 'rango/about.html', context=context_dict)
 
 def user_login(request):
     # If the request is a HTTP POST, try to pull out the relevant information.
